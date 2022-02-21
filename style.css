@@ -39,6 +39,7 @@ body > form > input {
 img{
     width: 30px;
     
+    
 }
 form button {
    padding: 6px 7px;
@@ -48,6 +49,7 @@ form button {
     cursor: pointer;
     background-color: #a26769;
     border-radius: 15px;
+    
 }
 form button:hover {
     background-color: #b56576;
