@@ -30,7 +30,7 @@ form {
 }
 body > form > input {
     height: 45px;
-    width: 250px;
+    width: 300px;
     border: none;
     color: #846267;
     font-size: larger;
@@ -56,5 +56,67 @@ form button {
 form button:hover {
     background-color: #b56576;
     transition: all 0.4s ease;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+    
+.todo-list{
+    min-width: 20%;
+    list-style: none;
+}
+.todo {
+    background-color: white;
+    margin: 1em;
+    height: 40px;
+    color:#846267;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 3px;
+    border-radius: 15px;
+    visibility: visible;
+}
 
+
+.hiddenTodo {
+    visibility: hidden;
+}
+.todo-item {
+    flex:1; 
+}
+.completedBtn {
+    width: 20px;
+    padding-top: 2px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.btn-img {
+    width: 15px;
+    pointer-events: none;
+    
+}
+.trashBtn {
+    width: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+
+}
+.btnTrash-img {
+    width: 13px;
+    pointer-events: none;
+   
+}
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
