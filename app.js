@@ -38,6 +38,8 @@ function addTodo (e){
     //delete todo
     if(item.classList[0] === 'trashBtn'){
         const todo=item.parentElement;
+        
+        
         todo.remove();
     }
     //mark to do as completed
