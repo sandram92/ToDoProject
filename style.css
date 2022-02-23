@@ -120,3 +120,8 @@ form button:hover {
     text-decoration: line-through;
     opacity: 0.5;
 }
+
+.animation {
+    opacity: 0;
+    transform: translate(120px) rotateY()
+}
