@@ -80,15 +80,23 @@ form button:hover {
     padding-left: 10px;
     padding-right: 3px;
     border-radius: 15px;
-    visibility: visible;
+    transition: all 1s ease;
+    
+}
+.fall {
+ transform: translateY(8rem) rotate(30deg);
+ opacity: 0;
+
 }
 
 
-.hiddenTodo {
-    visibility: hidden;
-}
 .todo-item {
     flex:1; 
+    visibility: visible;
+}
+.todo-item-hidden{
+    flex:1; 
+    visibility: hidden;
 }
 .completedBtn {
     width: 20px;
