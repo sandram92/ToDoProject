@@ -121,7 +121,7 @@ form button:hover {
     opacity: 0.5;
 }
 
-.animation {
+.fall {
+    transform: translateY(8rem) rotateY(30deg);
     opacity: 0;
-    transform: translate(120px) rotateY()
 }

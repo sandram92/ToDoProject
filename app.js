@@ -38,9 +38,11 @@ function addTodo (e){
     //delete todo
     if(item.classList[0] === 'trashBtn'){
         const todo=item.parentElement;
-        todo.classList.add('animation')
+        todo.classList.add('fall')
         
-        // todo.remove();
+        todo.addEventListener('transitioned', ()=> {
+            todo.remove()
+        })
     }
     //mark to do as completed
     if(item.classList[0]=== 'completedBtn'){
