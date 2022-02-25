@@ -66,14 +66,12 @@ function deleteCheck(e) {
 function todoFilter(e) {
     const filterValue = e.target.value
     const todos = todoList.children
-    console.log(todos)
     for(let i=0; i<todos.length; i++){
       if (!todos[i].classList.contains(filterValue)) {
             todos[i].style.display = 'none'
         } else {
             todos[i].style.display = "flex" 
-      
-        }}
+      }}
     }
 
     
