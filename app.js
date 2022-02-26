@@ -1,52 +1,78 @@
 //Selectors
-const todoInput= document.querySelector('.todo-input');
-const todoButton= document.querySelector('.todo-button');
-const todoList= document.querySelector('.todo-list');
-const trashButton=document.querySelector('.trashBtn');
+const todoInput = document.querySelector('.todo-input');
+const todoButton = document.querySelector('.todo-button');
+const todoList = document.querySelector('.todo-list');
+const trashButton = document.querySelector('.trashBtn');
+const filter = document.querySelector('.todo-filter')
 
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
+filter.addEventListener('change', filterTodo);
 //Functions
-function addTodo (e){
+function addTodo(e) {
     //Prevent form from submitting
     e.preventDefault()
     //Creating todoDiv
     const todoDiv = document.createElement('div');
-    todoDiv.setAttribute('class','todo');
+    todoDiv.setAttribute('class', 'todo uncompleted all');
     todoList.append(todoDiv);
     //Creating newTodo li
-    const newTodo=document.createElement('li');
-    newTodo.innerText=todoInput.value;
+    const newTodo = document.createElement('li');
+    newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
     //Check mark buttons
-    const completedButton= document.createElement('button');
-    completedButton.innerHTML= `<img class="btn-img" src="  https://pic.onlinewebfonts.com/svg/img_447789.png "  alt=""> `
+    const completedButton = document.createElement('button');
+    completedButton.innerHTML = `<img class="btn-img" src="  https://pic.onlinewebfonts.com/svg/img_447789.png "  alt=""> `
     completedButton.classList.add('completedBtn');
     todoDiv.appendChild(completedButton);
     //Trash mark buttons
-    const trashButton= document.createElement('button');
-    trashButton.innerHTML= `<img class="btnTrash-img" src=" https://pic.onlinewebfonts.com/svg/img_411751.png"  alt=""> `
+    const trashButton = document.createElement('button');
+    trashButton.innerHTML = `<img class="btnTrash-img" src=" https://pic.onlinewebfonts.com/svg/img_411751.png"  alt=""> `
     trashButton.classList.add('trashBtn');
     todoDiv.appendChild(trashButton);
     //Clear todo input
-     todoInput.value=""
+    todoInput.value = ""
 }
- function deleteCheck(e){
-    const item= e.target
+function deleteCheck(e) {
+    const item = e.target
     //delete todo
-    if(item.classList[0] === 'trashBtn'){
-        const todo=item.parentElement;
+    if (item.classList[0] === 'trashBtn') {
+        const todo = item.parentElement;
         todo.classList.add('fall')
-        
-        todo.addEventListener('transitioned', ()=> {
+        todo.addEventListener('transitioned', () => {
             todo.remove()
         })
     }
     //mark to do as completed
-    if(item.classList[0]=== 'completedBtn'){
-        const todo= item.parentElement;
-        todo.classList.add('completed')
+    if (item.classList[0] === 'completedBtn') {
+        const todo = item.parentElement;
+
+        if (todo.classList.contains('uncompleted')) {
+            todo.classList.remove('uncompleted')
+            todo.classList.add('completed')
+        }
+        else {
+            todo.classList.add('uncompleted')
+            todo.classList.remove('completed')
+
+        }
     }
 }
+
+
+function filterTodo(e) {
+    const filterValue = e.target.value
+    const todos = todoList.children
+    for (let i=0; i<todos.length; i++){
+         if(todos[i].classList.contains('uncompleted') && filterValue === 'completed'){
+             todos[i].style.display= 'flex'
+         }else if(!todos[i].classList.contains('uncompleted') && filterValue === 'completed'){
+            todos[i].style.display= 'none'
+        
+        }
+        else{ todos[i].style.display= 'flex'}
+    }
+}
+    
