@@ -22,6 +22,8 @@ function addTodo(e) {
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
+    //save to Local Storage
+    saveLocalTodos(todoInput.value)
     //Check mark buttons
     const completedButton = document.createElement('button');
     completedButton.innerHTML = `<img class="btn-img" src="  https://pic.onlinewebfonts.com/svg/img_447789.png "  alt=""> `
@@ -66,13 +68,19 @@ function filterTodo(e) {
     const filterValue = e.target.value
     const todos = todoList.children
     for (let i=0; i<todos.length; i++){
-         if(todos[i].classList.contains('uncompleted') && filterValue === 'completed'){
-             todos[i].style.display= 'flex'
-         }else if(!todos[i].classList.contains('uncompleted') && filterValue === 'completed'){
-            todos[i].style.display= 'none'
-        
-        }
-        else{ todos[i].style.display= 'flex'}
+         if(todos[i].classList.contains(filterValue)){
+             todos[i].style.display= "flex"
+         }
+         else{todos[i].style.display= "none" }
+       }}
+
+    function saveLocalTodos(todo){
+        ///Checking if I have someting in my Local Storage
+        let todos;
+        if(localStorage.getItem('todos')=== null){
+            todos = []
+        }else { JSON.parse(localStorage.getItem('todos'))
     }
-}
-    
+        todos.push(todo)
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
