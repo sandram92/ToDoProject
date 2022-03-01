@@ -22,10 +22,10 @@ function addTodo(e) {
     //Creating newTodo li
     const newTodo = document.createElement('li');
     newTodo.innerText = todoInput.value;
+    // save in local Storage
+    saveToLocalStorage(todoInput.value);
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
-    // save to local Storage
-    saveToLocalStorage(todoInput.value);
     //Check mark buttons
     const completedButton = document.createElement('button');
     completedButton.innerHTML = `<img class="btn-img" src="  https://pic.onlinewebfonts.com/svg/img_447789.png "  alt=""> `
@@ -77,15 +77,15 @@ function todoFilter(e) {
       }}
     }
 
-    function saveToLocalStorage(todo){
-     let todos;
-     if(localStorage.getItem('todos')=== null){
-         todos=[]
-     }else { JSON.parse(localStorage.getItem('todos'));
-    }
-    todos.push(todo);
-    localStorage.setItem('todos', JSON.stringify(todos));
-    
+    function saveToLocalStorage(todoValue){
+        let todoValues;
+        if( !localStorage.getItem('todoValues')){
+            todoValues=[]
+        }else  {
+        todoValues= JSON.parse(localStorage.getItem('todoValues'));
+        }
+        todoValues.push(todoValue);
+        localStorage.setItem('todoValues',JSON.stringify(todoValues));
     }
     
 
