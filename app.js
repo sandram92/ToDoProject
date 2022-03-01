@@ -46,6 +46,8 @@ function deleteCheck(e) {
         const todo = item.parentElement
         //Animation
         todo.classList.add('fall')
+        //removing from local storage
+        removeFromLocalStorage(todo)
         //deleting element 
         todo.addEventListener('transitionend', () => {
             todo.remove()
@@ -77,16 +79,27 @@ function todoFilter(e) {
       }}
     }
 
-    function saveToLocalStorage(todoValue){
-        let todoValues;
-        if( !localStorage.getItem('todoValues')){
-            todoValues=[]
+    function saveToLocalStorage(todo){
+        let todos;
+         if(!localStorage.getItem('todos')){
+            todos=[]
         }else  {
-        todoValues= JSON.parse(localStorage.getItem('todoValues'));
+        todos= JSON.parse(localStorage.getItem('todos'));
         }
-        todoValues.push(todoValue);
-        localStorage.setItem('todoValues',JSON.stringify(todoValues));
+         todos.push(todo);
+        localStorage.setItem('todos',JSON.stringify(todos));
     }
     
+    function removeFromLocalStorage(todo){
+        let todos;
+        if(!localStorage.getItem('todos')){
+            todos=[]
+        }else  {
+        todos= JSON.parse(localStorage.getItem('todos'));
+        }
+        const todoValue=todo.children[0].innerText
+        todos.splice(todos.indexOf(todoValue),1)
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
 
 
