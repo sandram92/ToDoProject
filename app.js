@@ -65,10 +65,8 @@ function deleteCheck(e) {
             todo.classList.remove('completed')
 
         }
-
     }
 }
-
 function todoFilter(e) {
     const filterValue = e.target.value
     const todos = todoList.children
@@ -118,7 +116,6 @@ function getTodos() {
         trashButton.innerHTML = `<img class="btnTrash-img" src=" https://pic.onlinewebfonts.com/svg/img_411751.png"  alt=""> `
         trashButton.classList.add('trashBtn');
         todoDiv.appendChild(trashButton);
-        //Clear todo input
 
     });
 
@@ -136,5 +133,3 @@ function removeFromLocalStorage(todo) {
     localStorage.setItem('todos', JSON.stringify(todos));
 
 }
-
-
